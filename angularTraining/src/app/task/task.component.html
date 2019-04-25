@@ -1,0 +1,58 @@
+<ul  class="nav navbar-nav" role="navigation">
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-2">
+        <button (click)="save()"><i class="fas fa-edit"></i></button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-light" (click)="delete()"> <i class="far fa-trash-alt"></i></button>
+      </div>
+      <div class="col-md-5">
+        Search
+        <input type="text" [(ngModel)]="userFilter.name" placeholder="search">
+
+      </div>
+    </div>
+  </div>
+</ul>
+
+<div class="container">
+<div class="row">
+  <div class="col-md-5">
+    <span>
+<!--
+  <div *ngIf="note">
+-->
+      <button (click)="disable()">New Note</button>
+  <!--</div>-->
+  <br>
+      {{myTextarea | piping }}<br>
+       {{date | date: 'h:mm a'}} {{text}}
+</span>
+
+    <table class="table">
+      <tr *ngFor="let content of data ">
+        <td (click)="displayContainingData(content) ">
+
+          {{content.split('$')[0]}}
+          <br>
+          {{content.split('$')[1]}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="col-md-7">
+    {{date |date: 'MMMM y d'}} at {{date | date: 'h:mm a'}}      <br>
+      <textarea rows="4" cols="50" [(ngModel)]="myTextarea"></textarea>
+
+  </div>
+</div>
+
+</div>
+
+
+
